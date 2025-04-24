@@ -1,5 +1,5 @@
 
-import { Line, Pie, ResponsiveContainer, XAxis, YAxis, Tooltip, CartesianGrid, Legend } from 'recharts';
+import { Line, Pie, PieChart, ResponsiveContainer, XAxis, YAxis, Tooltip, CartesianGrid, Legend } from 'recharts';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { ChartContainer } from '@/components/ui/chart';
 import { motion } from 'framer-motion';
@@ -136,28 +136,31 @@ const DashboardStats = () => {
                 </div>
               ))}
             </div>
-            <ChartContainer className="h-[300px]">
+            <ChartContainer className="h-[300px]" config={{}}>
               <ResponsiveContainer width="100%" height="100%">
-                <Pie 
-                  data={categoryData}
-                  dataKey="value"
-                  nameKey="name"
-                  cx="50%"
-                  cy="50%"
-                  innerRadius={60}
-                  outerRadius={100}
-                  label={({ name, percentage }) => `${name} ${percentage}`}
-                  labelLine={false}
-                  animationBegin={0}
-                  animationDuration={1500}
-                >
-                  {categoryData.map((entry, index) => (
-                    <Pie 
-                      key={`cell-${index}`}
-                      fill={COLORS[index % COLORS.length]}
-                    />
-                  ))}
-                </Pie>
+                <PieChart>
+                  <Pie 
+                    data={categoryData}
+                    dataKey="value"
+                    nameKey="name"
+                    cx="50%"
+                    cy="50%"
+                    innerRadius={60}
+                    outerRadius={100}
+                    label={({ name, percentage }) => `${name} ${percentage}`}
+                    labelLine={false}
+                    animationBegin={0}
+                    animationDuration={1500}
+                  >
+                    {categoryData.map((entry, index) => (
+                      <Pie 
+                        key={`cell-${index}`}
+                        dataKey="value"
+                        fill={COLORS[index % COLORS.length]}
+                      />
+                    ))}
+                  </Pie>
+                </PieChart>
               </ResponsiveContainer>
             </ChartContainer>
           </CardContent>
@@ -168,4 +171,3 @@ const DashboardStats = () => {
 };
 
 export default DashboardStats;
-
