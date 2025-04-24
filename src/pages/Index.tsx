@@ -1,9 +1,9 @@
-
 import HeroSection from "@/components/HeroSection";
 import QuickAccess from "@/components/QuickAccess";
 import AnnouncementCard from "@/components/AnnouncementCard";
 import EventCard from "@/components/EventCard";
 import IssueCard from "@/components/IssueCard";
+import DashboardStats from "@/components/DashboardStats";
 import { useAnnouncements, useEvents, useIssues } from "@/lib/api";
 import { Link } from "react-router-dom";
 import { Skeleton } from "@/components/ui/skeleton";
@@ -17,6 +17,7 @@ const Index = () => {
     <div className="space-y-8">
       <HeroSection />
       <QuickAccess />
+      <DashboardStats />
 
       <section>
         <div className="flex items-center justify-between mb-4">
